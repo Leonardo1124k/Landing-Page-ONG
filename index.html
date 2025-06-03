@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moradia Digna</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --laranja-claro: #E9B87A;
+      --laranja-destaque: #C97D35;
+      --marrom-suave: #8B6E4B;
+      --texto-escuro: #222222;
+      --fundo-claro: #F9F9F6;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--fundo-claro);
+      color: var(--texto-escuro);
+    }
+
+    header {
+      background-color: var(--laranja-claro);
+      padding: 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--texto-escuro);
+      text-decoration: none;
+    }
+
+    nav a {
+      margin-left: 1.5rem;
+      text-decoration: none;
+      font-weight: 500;
+      color: var(--texto-escuro);
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--laranja-destaque);
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
+
+      nav a {
+        margin: 0.5rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="#" class="logo">Moradia Digna</a>
+    <nav>
+      <a href="#sobre">Sobre</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#como-ajudar">Como Ajudar</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+</body>
+</html>
