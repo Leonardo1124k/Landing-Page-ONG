@@ -1,29 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
 }
 
 body {
   background-color: #F9F9F6;
   color: #333;
   line-height: 1.6;
+  font-family: poppins, sans-serif;
 }
 
 header {
   background-color: #fff;
-  padding: 20px 0;
+  padding: 20px 0 0 0;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   position: fixed;
+  top: 0;
   width: 100%;
+  height: 110px;
+  transition: top 0.2s;
   z-index: 100;
+
 }
 
 .container {
-  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  max-width: 1200px;
+  padding: 0 20px 0 0;
 }
 
 nav {
@@ -32,25 +38,15 @@ nav {
   align-items: center;
 }
 
-.logo {
-  font-size: 24px;
-  font-weight: bold;
-  color: #d69e2e;
-  /* cor dourada da imagem */
-  display: flex;
-  align-items: center;
+.logo img {
+  width: 210px;
+  height: 80px;
+  vertical-align: middle;
+  margin-right: 60px;
 }
 
 .logo::before {
-  content: "";
   background-image: url('https://img.icons8.com/ios-filled/50/construction.png');
-  /* substitua por ícone local se desejar */
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: 30px;
-  height: 30px;
-  display: inline-block;
-  margin-right: 8px;
 }
 
 .nav-links {
@@ -59,13 +55,13 @@ nav {
 }
 
 .nav-links li {
-  margin-left: 30px;
+  margin-left: 32px;
 }
 
 .nav-links a {
   text-decoration: none;
-  color: #2c3e50;
-  font-weight: 500;
+  color: black;
+  font-weight: 520;
 }
 
 .nav-links a:hover {
@@ -73,98 +69,99 @@ nav {
 }
 
 .donate-btn {
-  background-color: #d69e2e;
-  color: white !important;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-weight: bold;
+  background-color: #FBB000;
+  color: black;
+  padding: 15px 22px;
+  border-radius: 9px;
+  margin-left: 20px;
+  font-size: 1.1em;
+}
+
+.donate-btn strong {
+  font-weight: 900;
 }
 
 .donate-btn:hover {
-  background-color: #b7791f;
+  background-color: #C1831F !important;
+  color: black !important;
 }
 
 .hero {
-  background-image: url('background.jpg'); /* Substitua pelo caminho real da imagem */
-  background-size: cover;
-  background-position: center;
+  /*   background-size: cover; */
+  /*  background-position: center; */
   height: 100vh;
   position: relative;
-  display: flex;
+  /*  display: flex;
   align-items: center;
-  color: white;
+  color: white; */
 }
 
 .hero .overlay {
-  background: rgba(0, 0, 0, 0.6);
+  /* background: rgba(0, 0, 0, 0.6); */
   width: 100%;
   height: 100%;
-  padding: 60px 20px;
+  /* padding: 60px 20px; */
   display: flex;
+  /* justify-content: center; */
   align-items: center;
 }
 
-.hero-content {
-  max-width: 600px;
-}
-
 .hero h1 {
-  font-size: 2.8em;
-  line-height: 1.2;
-  margin-bottom: 20px;
-  font-weight: 800;
-}
-
-.hero .highlight {
-  color: #FFC107;
+  max-width: 9000px;
+  font-weight: 810;
+  font-size: 10em;
 }
 
 .hero p {
-  font-size: 1.1em;
   line-height: 1.5;
-  margin-bottom: 10px;
+  font-weight: 410;
 }
 
-.hero .icon-text {
+/* .hero .icon-text {
   margin-top: 10px;
   font-weight: 500;
   color: #FFC107;
-}
+} */
 
-
+/* Edita a imagem de fundo */
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url('images/imagem_de_fundo.png');
-  background-size: cover;
+  background-image: url('images/moradia_digna_logo.png');
+  background-size: 100% 100%;
   background-position: center;
   z-index: 0;
 }
 
+/* Edita e dá o escuro para a imagem de fundo */
 .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.6); 
+  background-color: rgba(0, 0, 0, 0.6);
   z-index: 1;
 }
 
 .hero .container {
+  margin-top: 75px;
   position: relative;
+  left: -200px;
   z-index: 2;
 }
 
 .hero h1 {
-  font-size: 40px;
-  margin-bottom: 10px;
-  color: #FFD166;
+  font-size: 52px;
+  margin-bottom: 20px;
+  color: #FFC107;
 }
 
 .hero p {
-  font-size: 18px;
+  font-size: 22px;
   color: #fff;
   margin-bottom: 20px;
+  letter-spacing: 1.4px;
+  font-weight: 600;
 }
 
 .mission-statement {
@@ -175,18 +172,21 @@ nav {
 }
 
 .cta-buttons {
+  position: relative;
+  left: 100px;
   margin-top: 25px;
   display: flex;
-  gap: 15px;
+  gap: 70px;
 }
 
 .cta-btn {
-  padding: 12px 24px;
-  font-size: 1em;
+  margin-top: 20px;
+  padding: 15px 24px;
+  font-size: 1.1em;
   border: none;
   cursor: pointer;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 800;
   transition: 0.3s;
   border-radius: 5px;
 }
@@ -197,16 +197,16 @@ nav {
 }
 
 .btn-yellow:hover {
-  background-color: #e0a800;
+  background-color: #C1831F;
 }
 
 .btn-outline {
-  background-color: transparent;
-  color: white;
-  border: 2px solid white;
+  background-color: #FFC107;
+  color: black;
 }
+
 .btn-outline:hover {
-  background-color: white;
+  background-color: #C1831F;
   color: black;
 }
 
@@ -280,7 +280,7 @@ nav {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
   margin-left: auto;
-  min-height: 380px; 
+  min-height: 380px;
 }
 
 .carousel-title {
@@ -311,7 +311,8 @@ nav {
 }
 
 .carousel-prev {
-  left: 8px;  /* espaço menor por causa da largura reduzida */
+  left: 8px;
+  /* espaço menor por causa da largura reduzida */
 }
 
 
@@ -323,8 +324,8 @@ nav {
   display: flex;
   justify-content: center;
   gap: 8px;
-  margin-top: 1rem;         
-  position: static;         
+  margin-top: 1rem;
+  position: static;
 }
 
 .dot {
@@ -348,9 +349,10 @@ nav {
 
 /* Projects Section */
 .projects-section {
-background-color: #F9F9F6;
-padding: 60px 20px;
+  background-color: #F9F9F6;
+  padding: 60px 20px;
 }
+
 .project-card {
   background-color: #fff;
   border-radius: 8px;
@@ -455,7 +457,8 @@ padding: 60px 20px;
 
 .partners-grid {
   display: flex;
-  justify-content: center; /* Centraliza os logos */
+  justify-content: center;
+  /* Centraliza os logos */
   gap: 30px;
   overflow: hidden;
   scroll-behavior: smooth;
@@ -518,7 +521,8 @@ padding: 60px 20px;
 .partner-cta {
   margin-top: 40px;
   display: flex;
-  justify-content: flex-end; /* Alinha o conteúdo à direita */
+  justify-content: flex-end;
+  /* Alinha o conteúdo à direita */
   align-items: center;
   gap: 20px;
 }
@@ -533,30 +537,33 @@ padding: 60px 20px;
   .partners-carousel {
     padding: 0 40px;
   }
-  
+
   .partner-logo-box {
     width: 150px;
     height: 100px;
   }
-  
+
   .partners-prev,
   .partners-next {
     font-size: 1.5rem;
     width: 40px;
     height: 40px;
   }
-  
+
   .partner-cta {
     flex-direction: column;
-    align-items: flex-end; /* Mantém alinhado à direita */
+    align-items: flex-end;
+    /* Mantém alinhado à direita */
     gap: 15px;
   }
-  
+
   .partner-cta-text {
     margin-bottom: 10px;
-    text-align: right; /* Alinha o texto à direita */
+    text-align: right;
+    /* Alinha o texto à direita */
   }
 }
+
 footer {
   background-color: #DADADA;
   color: #333;
@@ -622,7 +629,8 @@ footer {
 }
 
 /* Ícones */
-.fas, .fab {
+.fas,
+.fab {
   width: 20px;
   text-align: center;
 }
@@ -734,7 +742,7 @@ footer {
   line-height: 1.6;
 }
 
-.realizacoes-prev, 
+.realizacoes-prev,
 .realizacoes-next {
   position: absolute;
   top: 50%;
@@ -762,7 +770,7 @@ footer {
   right: -60px;
 }
 
-.realizacoes-prev:hover, 
+.realizacoes-prev:hover,
 .realizacoes-next:hover {
   background-color: rgba(239, 159, 51, 0.1);
 }
@@ -792,25 +800,26 @@ footer {
   .realizacoes-content {
     flex-direction: column;
   }
-  
+
   .realizacoes-carousel,
   .realizacoes-texto {
     max-width: 100%;
   }
-  
+
   .realizacoes-prev {
     left: 10px;
   }
-  
+
   .realizacoes-next {
     right: 10px;
   }
 }
+
 .carousel-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem; 
+  gap: 1rem;
 }
 
 .carousel-box {
@@ -820,7 +829,7 @@ footer {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 500px;
-  min-height: 300px; 
+  min-height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -832,7 +841,7 @@ footer {
   justify-content: center;
   gap: 8px;
   margin-top: 0.5rem;
-  position: static; 
+  position: static;
 }
 
 
@@ -840,7 +849,7 @@ footer {
   flex: 1;
   min-width: 320px;
   max-width: 500px;
-  min-height: 380px; 
+  min-height: 380px;
   background: white;
   border-radius: 14px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -861,7 +870,7 @@ footer {
   color: #222;
 }
 
-/* Seção Nossa História */ 
+/* Seção Nossa História */
 .historia-section {
   background-color: #F9F9F6;
   padding: 80px 0;
@@ -974,16 +983,16 @@ footer {
   .historia-wrapper {
     flex-direction: column;
   }
-  
+
   .historia-texto,
   .historia-carousel-container {
     max-width: 100%;
   }
-  
+
   .historia-prev {
     left: 10px;
   }
-  
+
   .historia-next {
     right: 10px;
   }
