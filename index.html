@@ -4,26 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Moradia Digna">
-    <meta name="description" content="Site voltado a causa da ONG Moradia Digna">
+    <meta name="author" content="ONG Moradia Digna">
+    <meta name="description"
+        content="Landing page oficial da ONG Moradia Digna. Saiba como doar, se voluntariar e conhecer nossos projetos sociais.">
     <title>Moradia Digna</title>
+    <!--Favicon/icon da página-->
     <link rel="icon" href="images/moradia_digna_logo.png" type="image/x-icon">
+    <!--CSS principal-->
     <link rel="stylesheet" href="style.css" type="text/css">
+    <!--Ícones para colocar de redes sociais e outros-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
+    <!--CABEÇALHO aqui-->
     <header>
         <div class="container">
-            <nav>
+            <nav aria-label="Navegação da página">
                 <div class="logo">
                     <a href="#">
-                    <img src="images/moradia_digna_logo.png" alt="logo"> </a>
+                        <img src="images/moradia_digna_logo.png" alt="Logo da Moradia Digna"></a>
                 </div>
                 <ul class="nav-links">
                     <li><a href="#quem-somos">Quem Somos</a></li>
                     <li><a href="#nossas-acoes">Nossas Ações</a></li>
                     <li><a href="#como-ajudar">Como ajudar</a></li>
+                    <!--Aqui abaixo deve haver o link do formulário para doação-->
                     <li><a href="#" class="donate-btn"> <strong>Doe Agora</strong></a></li>
                 </ul>
             </nav>
@@ -31,67 +37,104 @@
     </header>
 
     <main>
+        <!--Seção CALL TO ACTION principal-->
         <section class="hero">
-            <div class="overlay">
-                <div class="container hero-content">
-                    <div><h1>Moradia é um direito<br>Dignidade é nossa missão.</h1>
+            <div class="hero-overlay">
+                <div class="container-hero-content">
+                    <div class="hero-content">
+                        <h1 class="hero-title">Moradia é um direito<br>Dignidade é nossa missão.</h1>
+                        <p class="hero-text">Na Moradia Digna, acreditamos que todo ser humano <br> merece viver com
+                            segurança, conforto e respeito.</p>
+                        <p class="hero-text">Com voluntários dedicados e doações de materiais, <br>transformamos a vida
+                            de famílias em situação de <br> vulnerabilidade.</p>
+                        <p class="hero-text">💛 Sua ajuda pode reconstruir histórias.</p>
+                        <div class="cta-buttons">
+                            <!--Colocar form de doação-->
+                            <a href="#" class="cta-btn btn-yellow">Quero Doar</a>
+                            <!--Colocar form voluntario-->
+                            <a href="#" class="cta-btn btn-outline">Ser voluntário</a>
                         </div>
-                    <p>Na Moradia Digna, acreditamos que todo ser humano <br> merece viver com
-                        segurança, conforto e respeito.</p>
-                    <p>Com voluntários dedicados e doações de materiais, <br>transformamos a vida
-                        de famílias em situação de <br> vulnerabilidade.</p>
-                    <p>💛 Sua ajuda pode reconstruir histórias.</p>
-                    <div class="cta-buttons">
-                        <a href="#doe-agora" class="cta-btn btn-yellow">Quero Doar</a>
-                        <a href="#como-ajudar" class="cta-btn btn-outline">Ser voluntário</a>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- Why Section -->
-        <section class="section why-section" id="nossas-acoes">
+        <!--POR QUE ESTAMOS aqui -->
+        <section class="why-section" id="porque-estamos-aqui">
             <div class="container">
-                <h2 class="section-title"><span>POR QUE ESTAMOS AQUI?</span></h2>
+                <h2 class="about-title">POR QUE ESTAMOS AQUI?</h2>
 
-                <div class="content-wrapper">
-                    <div class="main-content">
-                        <p>Acreditamos que todo ser humano merece viver com dignidade.</p>
-                        <p>Mas muitas famílias ainda enfrentam condições como: casas com infiltrações, mofo, falta de
+                <!-- <div class="content-wrapper"> -->
+                <div class="about-grid">
+                    <!-- <div class="main-content"> -->
+                    <div class="about-content">
+                        <p class="about-text">Acreditamos que todo ser humano merece viver com dignidade.</p>
+                        <p class="about-text">Mas muitas famílias ainda enfrentam condições como: casas com
+                            infiltrações, mofo, falta de
                             saneamento, risco elétrico, crianças expostas ao frio e à umidade...</p>
-                        <p>Diante desse cenário, temos atuado com a reforma de casas aos mais necessitados. Um pouco do
+                        <p class="about-text">Diante desse cenário, temos atuado com a reforma de casas aos mais
+                            necessitados. Um pouco do
                             impacto que já trouxemos:</p>
-                        <ul class="actions-list">
-                            <li>+12 casas reformadas</li>
-                            <li>+50 famílias beneficiadas</li>
-                            <li>+30 voluntários engajados</li>
-                            <li>+20 eventos solidários realizados</li>
-                            <li>Centenas de materiais recebidos e reaproveitados</li>
+                        <!-- <ul class="actions-list"> -->
+                        <ul class="about-stats">
+                            <li class="stat-item">+12 casas reformadas</li>
+                            <li class="stat-item">+50 famílias beneficiadas</li>
+                            <li class="stat-item">+30 voluntários engajados</li>
+                            <li class="stat-item">+20 eventos solidários realizados</li>
+                            <li class="stat-item">Centenas de materiais recebidos e reaproveitados</li>
                         </ul>
-                        <p>Juntos, estamos mudando essa realidade. Um lar por vez.</p>
+                        <p class="about-text">Juntos, estamos mudando essa realidade. Um lar por vez.</p>
                     </div>
 
-                    <div class="carousel">
-                        <div class="carousel-item active">
-                            <h3 class="carousel-title">Missão</h3>
-                            <p class="carousel-text">Nossa missão é proporcionar dignidade, esperança e transformação
-                                para pessoas em vulnerabilidade.</p>
+                    <div class="about-carousel">
+                        <div class="carousel-container">
+                            <div class="carousel-slide active">
+                                <div class="mission-card">
+                                    <h3 class="carousel-title">Missão</h3>
+                                    <p class="carousel-text">Nossa missão é proporcionar dignidade, esperança e
+                                        transformação
+                                        para pessoas em vulnerabilidade.</p>
+                                </div>
+                            </div>
+
+                            <div class="carousel-slide">
+                                <div class="mission-card">
+                                    <h3 class="carousel-title">Visão</h3>
+                                    <p class="carousel-text">Uma cidade onde nenhuma família precise escolher entre
+                                        segurança e um teto.</p>
+                                </div>
+                            </div>
+
+                            <div class="carousel-slide">
+                                <div class="mission-card">
+                                    <h3 class="carousel-title">Valores</h3>
+                                    <ul class="values-list">
+                                        <li>Respeito</li>
+                                        <li>Transparência</li>
+                                        <li>Empatia</li>
+                                        <li>Ação Coletiva</li>
+                                    </ul>
+                                    <p class="carousel-text">Acreditamos no poder da comunidade.</p>
+                                </div>
+                            </div>
                         </div>
-                        <button class="carousel-prev">&#10094;</button>
-                        <button class="carousel-next">&#10095;</button>
+
+                        <!-- Controles do Carrossel -->
+                        <button class="carousel-prev" aria-label="Slide anterior">‹</button>
+                        <button class="carousel-next" aria-label="Próximo slide">›</button>
+
+                        <!-- Indicadores -->
                         <div class="carousel-dots">
-                            <span class="dot active"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
+                            <span class="dot active" data-slide="0"></span>
+                            <span class="dot" data-slide="1"></span>
+                            <span class="dot" data-slide="2"></span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-
-        <!-- Projects Section -->
-        <!-- Projects Section -->
-        <section class="section realizacoes-section" id="projetos">
+        <!-- Seção NOSSAS REALIZAÇÕES -->
+        <!--<section class="section realizacoes-section" id="projetos">
             <div class="container">
                 <h2 class="realizacoes-title">NOSSAS REALIZAÇÕES</h2>
 
@@ -100,7 +143,6 @@
 
                     <div class="realizacoes-content">
                         <div class="realizacoes-carousel">
-                            <!-- conteúdo ou imagem -->
                         </div>
 
                         <div class="realizacoes-texto">
@@ -133,6 +175,70 @@
                 </div>
             </div>
         </section>
+ -->
+<section class="realizacoes-section" id="projetos">
+    <div class="container">
+        <h2 class="realizacoes-title">NOSSAS REALIZAÇÕES</h2>
+        
+        <div class="realizacoes-carousel">
+            <!-- Item 1 - Dona Messias -->
+            <div class="realizacao-item active">
+                <div class="realizacao-imagem">
+                    <img src="images/moradia_digna_logo.png" alt="Casa reformada da Dona Messias">
+                </div>
+                <div class="realizacao-conteudo">
+                    <h3 class="realizacao-subtitulo">CASA DA DONA MESSIAS</h3>
+                    <div class="realizacao-descricao">
+                        <p>Dona Messias, de 70 anos, vivia há mais de 40 anos em uma casa em condições precárias, com infiltrações, mofo, janelas improvisadas com papelão e um banheiro sem estrutura adequada.</p>
+                        <p>Através do trabalho voluntário da Moradia Digna e com o apoio de doações, a casa foi totalmente reformada em 6 meses. A residência recebeu novo telhado, piso, revestimentos, parte elétrica, janelas de ferro e um novo quarto.</p>
+                        <p>Hoje, Dona Messias vive com mais conforto, segurança e dignidade. Seu lar se transformou em um espaço acolhedor, saudável e digno, trazendo mais tranquilidade e esperança para sua vida.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Item 2 - Família Silva (adicione seu conteúdo) -->
+            <div class="realizacao-item">
+                <div class="realizacao-imagem">
+                    <img src="images/moradia_digna_logo.png" alt="Casa reformada da Família Silva">
+                </div>
+                <div class="realizacao-conteudo">
+                    <h3 class="realizacao-subtitulo">FAMÍLIA SILVA</h3>
+                    <div class="realizacao-descricao">
+                         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem ea itaque quis? Accusantium, at? Odit enim totam tempore. Facere corporis odit ducimus amet quas nobis omnis maiores minima laudantium ratione?</p>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis harum velit nulla pariatur, aut iste veniam in repellendus dignissimos, sequi officiis et similique possimus delectus nemo assumenda odit quibusdam quasi.</p>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro, quidem! Velit voluptates odio corrupti hic, enim maxime id distinctio excepturi ipsa quae nam facere quisquam eius minus asperiores? Quod, optio?</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Item 3 - Seu João (adicione seu conteúdo) -->
+            <div class="realizacao-item">
+                <div class="realizacao-imagem">
+                    <img src="images/moradia_digna_logo.png" alt="Casa reformada do Seu João">
+                </div>
+                <div class="realizacao-conteudo">
+                    <h3 class="realizacao-subtitulo">SEU JOÃO</h3>
+                    <div class="realizacao-descricao">
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem ea itaque quis? Accusantium, at? Odit enim totam tempore. Facere corporis odit ducimus amet quas nobis omnis maiores minima laudantium ratione?</p>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis harum velit nulla pariatur, aut iste veniam in repellendus dignissimos, sequi officiis et similique possimus delectus nemo assumenda odit quibusdam quasi.</p>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro, quidem! Velit voluptates odio corrupti hic, enim maxime id distinctio excepturi ipsa quae nam facere quisquam eius minus asperiores? Quod, optio?</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Controles -->
+            <button class="carousel-prev" aria-label="História anterior">&#10094;</button>
+            <button class="carousel-next" aria-label="Próxima história">&#10095;</button>
+        </div>
+        
+        <!-- Indicadores -->
+        <div class="carousel-dots">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+        </div>
+    </div>
+</section>
 
         <!-- Seção Nossa História -->
         <section class="historia-section" id="quem-somos">
