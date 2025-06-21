@@ -96,73 +96,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
 ///SEÇÃO NOSSAS REALIZAÇÕES
 document.addEventListener('DOMContentLoaded', function() {
-    const carousel = document.querySelector('.realizacoes-carousel');
+    const realizacoesCarousel = document.querySelector('.realizacoes-carousel');
     const items = document.querySelectorAll('.realizacao-item');
-    const dots = document.querySelectorAll('.dot');
-    const prevBtn = document.querySelector('.carousel-prev');
-    const nextBtn = document.querySelector('.carousel-next');
+    const dots = document.querySelectorAll('.realizacoes-dot');
+    const prevBtn = document.querySelector('.realizacoes-prev');
+    const nextBtn = document.querySelector('.realizacoes-next');
     
     let currentIndex = 0;
     let interval;
-    let isAnimating = false;
 
-    // Adiciona transição CSS dinamicamente
-    const style = document.createElement('style');
-    style.textContent = `
-        .realizacao-item {
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-            opacity: 0;
-            visibility: hidden;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-        }
-        .realizacao-item.active {
-            opacity: 1;
-            visibility: visible;
-            position: relative;
-        }
-    `;
-    document.head.appendChild(style);
-
+    // Função para mostrar item
     function showItem(index) {
-        if (isAnimating || index === currentIndex) return;
-        isAnimating = true;
+        // Remove classe ativa de todos
+        items.forEach(item => item.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
         
-        const newIndex = (index + items.length) % items.length;
+        // Atualiza índice
+        currentIndex = (index + items.length) % items.length;
         
-        // Esconde o item atual
-        items[currentIndex].classList.remove('active');
-        dots[currentIndex].classList.remove('active');
-        
-        // Mostra o novo item
-        setTimeout(() => {
-            items[newIndex].classList.add('active');
-            dots[newIndex].classList.add('active');
-            currentIndex = newIndex;
-            isAnimating = false;
-        }, 50); // Pequeno delay para garantir a transição
+        // Adiciona classe ativa
+        items[currentIndex].classList.add('active');
+        dots[currentIndex].classList.add('active');
     }
-    
-    function nextItem() {
-        showItem(currentIndex + 1);
-    }
-    
-    function prevItem() {
-        showItem(currentIndex - 1);
-    }
-    
+
     // Event listeners
     nextBtn.addEventListener('click', () => {
         clearInterval(interval);
-        nextItem();
+        showItem(currentIndex + 1);
         startAutoRotate();
     });
     
     prevBtn.addEventListener('click', () => {
         clearInterval(interval);
-        prevItem();
+        showItem(currentIndex - 1);
         startAutoRotate();
     });
     
@@ -176,19 +142,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function startAutoRotate() {
         clearInterval(interval);
-        interval = setInterval(nextItem, 8000);
+        interval = setInterval(() => showItem(currentIndex + 1), 8000);
     }
     
-    carousel.addEventListener('mouseenter', () => clearInterval(interval));
-    carousel.addEventListener('mouseleave', startAutoRotate);
+    // Controles de hover
+    realizacoesCarousel.addEventListener('mouseenter', () => clearInterval(interval));
+    realizacoesCarousel.addEventListener('mouseleave', startAutoRotate);
     
-    // Inicialização correta
-    items.forEach((item, index) => {
-        if (index !== 0) {
-            item.style.opacity = '0';
-            item.style.visibility = 'hidden';
-        }
-    });
+    // Inicialização
     showItem(0);
     startAutoRotate();
 });

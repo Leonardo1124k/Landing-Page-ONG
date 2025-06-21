@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -124,7 +125,7 @@ nav {
   color: #fff;
   margin-bottom: 20px;
   letter-spacing: 1.7px;
-  font-weight: 600;
+  font-weight: 550;
 }
 
 .hero::after {
@@ -401,6 +402,7 @@ nav {
 .realizacoes-section {
   background-color: #faf9f5;
   padding: 5rem 0;
+  position: relative;
 }
 
 .realizacoes-title {
@@ -416,17 +418,27 @@ nav {
   position: relative;
   max-width: 1200px;
   margin: 0 auto;
-  overflow: hidden;
+  padding: 0 80px;
+  min-height: 500px;
 }
 
 .realizacao-item {
   display: none;
   gap: 3rem;
   align-items: center;
+  transition: opacity 0.5s ease;
+  width: 100%;
 }
 
 .realizacao-item.active {
   display: flex;
+  opacity:1;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn{
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
 
 .realizacao-imagem {
@@ -435,6 +447,11 @@ nav {
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease; /* Adiciona efeito hover */
+}
+
+.realizacao-imagem:hover {
+  transform: scale(1.02);
 }
 
 .realizacao-imagem img {
@@ -446,6 +463,7 @@ nav {
 .realizacao-conteudo {
   flex: 1;
   min-width: 300px;
+  padding: 20px 0;
 }
 
 .realizacao-subtitulo {
@@ -453,6 +471,8 @@ nav {
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
   font-weight: 700;
+  position: relative;
+  padding-bottom: 10px;
 }
 
 .realizacao-descricao p {
@@ -463,60 +483,54 @@ nav {
 }
 
 /* Controles do Carrossel */
-.carousel-prev,
-.carousel-next {
+.realizacoes-prev,
+.realizacoes-next {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   background: rgba(255, 255, 255, 0.8);
   border: none;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   cursor: pointer;
   z-index: 10;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
   color: #ef9f33;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   border: 2px solid #ef9f33;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.carousel-prev {
-  left: -70px;
-  /* Aumentei a distância para a esquerda */
+.realizacoes-prev {
+  left: -20px;
 }
 
-.carousel-next {
-  right: -70px;
-  /* Aumentei a distância para a direita */
+.realizacoes-next {
+  right: -20px;
 }
 
-.carousel-prev:hover,
-.carousel-next:hover {
+.realizacoes-prev:hover,
+.realizacoes-next:hover {
   background: #ef9f33;
   color: white;
   transform: translateY(-50%) scale(1.1);
-}
-
-.carousel-prev {
-  left: 20px;
-}
-
-.carousel-next {
-  right: 20px;
+  box-shadow: 0 4px 20px rgba(239, 159, 51, 0.3);
 }
 
 /* Indicadores */
-.carousel-dots {
+/* .realizacoes-dots {
   display: flex;
   justify-content: center;
   gap: 15px;
-  margin-top: 2rem;
+  margin-top: 3rem;
   padding: 15px 0;
 }
 
-.dot {
+.realizacoes-dot {
   width: 14px;
   height: 14px;
   border-radius: 50%;
@@ -525,10 +539,15 @@ nav {
   transition: all 0.4s ease;
 }
 
-.dot.active {
+.realizacoes-dot.active {
   background: #ef9f33;
   transform: scale(1.2);
 }
+
+.realizacoes-dot:hover {
+  transform: scale(1.3);
+} */
+
 
   /* COMO AJUDAR */
   .help-section-columns {
