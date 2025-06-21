@@ -550,32 +550,129 @@ nav {
 
 
   /* COMO AJUDAR */
+.comoajudar-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #ef9f33;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.help-section-columns {
+    padding: 2rem 0;
+}
+
+.help-columns-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.help-column {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+}
+
+.help-column > :not(.cta-buttons-2) {
+    margin-bottom: 60px; /* Espaço para o botão */
+}
+
+.cta-buttons-2 {
+    position: absolute; /* Novo */
+    bottom: 0; /* Novo - fixa na base */
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.values-list-2 {
+    text-align: left;
+    list-style: none;
+    padding: 0;
+    width: fit-content;
+    margin: 1rem auto;
+}
+
+.values-list-2 li {
+    padding-left: 1.5rem;
+    position: relative;
+    margin: 0.5rem 0;
+    margin-top: 0.2rem; /* Espaço mínimo acima da lista */
+    padding-top: 0; /* Remove padding extra */
+}
+
+.help-column p + .values-list-2 {
+    margin-top: -1rem; /* Valor negativo para "puxar" a lista para cima */
+}
+
+.values-list-2 li::before {
+    content: "•";
+    color: #F4A835;
+    font-size: 1.5rem;
+    position: absolute;
+    left: 0;
+}
+
+  .btn-yellow-2 {
+  background-color: #FFC107;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  text-align: center;
+  min-width: 150px; /* Largura mínima para uniformidade */
+}
+
+.btn-yellow-2:hover {
+  background-color: #222;
+  color: #FFC107;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
   .help-section-columns {
     background-color: #F9F9F6;
     padding: 80px 20px;
   }
 
   .help-columns-container {
-    max-width: 1200px;
-    margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
-  }
+    align-items: start; /* Importante para alinhar pelo topo */
+}
 
   .help-column {
-    padding: 20px;
-  }
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Obrigatório para o alinhamento */
+    position: relative; /* Novo */
+}
 
   .help-column h3 {
-    color: #d4a529;
+    color: #F4A835;
     font-size: 1.5rem;
-    margin-bottom: 20px;
+    margin-bottom: 0.5rem;
   }
 
   .help-column p {
-    margin-bottom: 15px;
-    line-height: 1.6;
+    margin-bottom: 0.2rem; /* Espaço mínimo abaixo do parágrafo */
+    line-height: 1.4; /* Reduz um pouco a altura da linha */
+    padding-bottom: 0; /* Remove padding extra */
   }
 
   .help-column ul {
@@ -602,7 +699,7 @@ nav {
 
   .partners-title {
     font-size: 2rem;
-    color: #d4a529;
+    color: #F4A835;
     margin-bottom: 15px;
   }
 
@@ -688,7 +785,7 @@ nav {
   .partner-cta {
     margin-top: 40px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     /* Alinha o conteúdo à direita */
     align-items: center;
     gap: 20px;
