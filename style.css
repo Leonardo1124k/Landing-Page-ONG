@@ -634,18 +634,24 @@ nav {
     flex-direction: column;
     height: 100%; /* Obrigatório para o alinhamento */
     position: relative; /* Novo */
+    border-right: 1px solid #000000; /* Linha cinza clara */
 }
+
+  .help-column:last-child {
+    border-right: none;
+  }
 
   .help-column h3 {
     color: #F4A835;
     font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 30px;
   }
 
   .help-column p {
     margin-bottom: 0.2rem; /* Espaço mínimo abaixo do parágrafo */
     line-height: 1.4; /* Reduz um pouco a altura da linha */
     padding-bottom: 0; /* Remove padding extra */
+    text-align: left;
   }
 
   .help-column ul {
@@ -663,13 +669,33 @@ nav {
     }
   }
 
+  @media (max-width: 768px) {
+    .help-column:not(:last-child)::after {
+        display: none; /* Remove linhas verticais no mobile */
+    }
+    .help-column {
+        border-bottom: 1px solid #000000;
+        padding-bottom: 2rem;
+        margin-bottom: 2rem;
+    }
+    .help-column:last-child {
+        border-bottom: none;
+    }
+}
+
   /* Seção Parceiros Atualizada */
+
+  .partners-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
   .partners-section {
     background-color: #f5f7fa;
-    padding: 80px 20px;
+    padding: 80px 0; /* Padding apenas top/bottom */
     text-align: center;
-  }
-
+    position: relative;
+}
   .partners-title {
     font-size: 2rem;
     color: #F4A835;
@@ -687,20 +713,17 @@ nav {
 
   .partners-carousel {
     position: relative;
-    max-width: 1200px;
+    overflow: hidden;
+    width: calc(100% - 120px); /* Deixa espaço para as setas */
     margin: 0 auto;
-    padding: 0 60px;
-  }
+    padding: 0 60px; /* Espaço para as setas não cortarem */
+}
 
   .partners-grid {
     display: flex;
-    justify-content: center;
-    /* Centraliza os logos */
     gap: 30px;
-    overflow: hidden;
-    scroll-behavior: smooth;
-    padding: 20px 0;
-  }
+    will-change: transform; /* Melhora performance */
+}
 
   .partner-logo-box {
     width: 200px;
@@ -726,34 +749,44 @@ nav {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: none;
+    background: rgba(255, 255, 255, 0.9);
     border: none;
-    font-size: 2rem;
-    cursor: pointer;
-    color: #d4a529;
-    z-index: 2;
     width: 50px;
     height: 50px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    color: #ef9f33;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    border: 2px solid #ef9f33;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
-    transition: all 0.3s;
-  }
+}
+
 
   /* Ajustando o espaçamento igual para ambas as setas */
   .partners-prev {
-    left: 0;
-  }
+    top: 225px;
+    left: -10px;
+    margin-left: 10px; /* Distância da borda */
+}
 
   .partners-next {
-    right: 0;
-  }
+    top: 225px;
+    right: -10px;
+    margin-right: 10px; /* Distância da borda */
+}
 
   .partners-prev:hover,
   .partners-next:hover {
-    background-color: rgba(212, 165, 41, 0.1);
-  }
+    background: #ef9f33;
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 4px 20px rgba(239, 159, 51, 0.3);
+}
 
   .partner-cta {
     margin-top: 40px;

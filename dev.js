@@ -153,3 +153,76 @@ document.addEventListener('DOMContentLoaded', function() {
     showItem(0);
     startAutoRotate();
 });
+
+// Carrossel de Parceiros - Versão Deslizante
+function initPartnersCarousel() {
+    const carousel = document.querySelector('.partners-carousel');
+    const grid = document.querySelector('.partners-grid');
+    const items = document.querySelectorAll('.partner-logo-box');
+    const prevBtn = document.querySelector('.partners-prev');
+    const nextBtn = document.querySelector('.partners-next');
+    
+    if (!grid || items.length < 3) return; // Precisa de pelo menos 3 itens
+    
+    const itemWidth = items[0].offsetWidth + 30; // Largura + gap
+    let currentIndex = 0;
+    const visibleItems = Math.floor(carousel.offsetWidth / itemWidth);
+    
+    // Clona os primeiros itens e adiciona no final para efeito contínuo
+    items.forEach((item, index) => {
+        if (index < visibleItems) {
+            const clone = item.cloneNode(true);
+            grid.appendChild(clone);
+        }
+    });
+
+    // Atualiza o carrossel
+    function updateCarousel() {
+        grid.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+        grid.style.transition = 'transform 0.5s ease';
+        
+        // Quando chegar no final, volta sem animação
+        if (currentIndex >= items.length) {
+            setTimeout(() => {
+                grid.style.transition = 'none';
+                currentIndex = 0;
+                grid.style.transform = `translateX(0)`;
+            }, 500);
+        }
+        
+        // Quando voltar ao início, ajusta sem animação
+        if (currentIndex < 0) {
+            setTimeout(() => {
+                grid.style.transition = 'none';
+                currentIndex = items.length - 1;
+                grid.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+            }, 500);
+        }
+    }
+
+    // Próximo item
+    nextBtn.addEventListener('click', () => {
+        currentIndex++;
+        updateCarousel();
+    });
+
+    // Item anterior
+    prevBtn.addEventListener('click', () => {
+        currentIndex--;
+        updateCarousel();
+    });
+
+    // Inicializa
+    updateCarousel();
+
+    // Redimensionamento
+    window.addEventListener('resize', () => {
+        const newItemWidth = items[0].offsetWidth + 30;
+        currentIndex = Math.round(currentIndex * itemWidth / newItemWidth);
+        itemWidth = newItemWidth;
+        updateCarousel();
+    });
+}
+
+// Inicia quando o DOM estiver pronto
+document.addEventListener('DOMContentLoaded', initPartnersCarousel);
