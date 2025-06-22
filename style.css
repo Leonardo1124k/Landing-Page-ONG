@@ -521,33 +521,6 @@ nav {
   box-shadow: 0 4px 20px rgba(239, 159, 51, 0.3);
 }
 
-/* Indicadores */
-/* .realizacoes-dots {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 3rem;
-  padding: 15px 0;
-}
-
-.realizacoes-dot {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #ccc;
-  cursor: pointer;
-  transition: all 0.4s ease;
-}
-
-.realizacoes-dot.active {
-  background: #ef9f33;
-  transform: scale(1.2);
-}
-
-.realizacoes-dot:hover {
-  transform: scale(1.3);
-} */
-
 
   /* COMO AJUDAR */
 .comoajudar-title {
