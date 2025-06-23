@@ -88,13 +88,12 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.disabled = true;
             submitBtn.textContent = 'Processando...';
             
-            // Simular envio (remova isso em produção)
             setTimeout(() => {
                 const nome = document.getElementById('fullName').value;
                 const valor = selectedAmount.value === 'other' ? customAmountInput.value : selectedAmount.value;
                 
-                // REDIRECIONAMENTO ATUALIZADO PARA O ARQUIVO ESPECÍFICO
-                window.location.href = '../layout/two/page.html?nome=' + encodeURIComponent(nome) + '&valor=' + valor;
+                // CORREÇÃO APLICADA AQUI - caminho relativo ajustado
+                window.location.href = '../formsubmmit_/two/page.html?nome=' + encodeURIComponent(nome) + '&valor=' + valor;
             }, 1000);
         }
     });
@@ -122,7 +121,6 @@ function copyPixKey(e) {
         setTimeout(() => copyBtn.textContent = originalText, 2000);
     }).catch(err => {
         console.error('Erro ao copiar:', err);
-        // Fallback para navegadores antigos
         const textarea = document.createElement('textarea');
         textarea.value = pixKey;
         document.body.appendChild(textarea);
