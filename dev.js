@@ -154,125 +154,200 @@ document.addEventListener('DOMContentLoaded', function() {
     startAutoRotate();
 });
 
+// Carrossel de Parceiros - Versão Deslizante
 function initPartnersCarousel() {
     const carousel = document.querySelector('.partners-carousel');
-    if (!carousel) return;
-    
-    const grid = carousel.querySelector('.partners-grid');
-    const items = grid.querySelectorAll('.partner-logo-box');
+    const grid = document.querySelector('.partners-grid');
+    const items = document.querySelectorAll('.partner-logo-box');
     const prevBtn = document.querySelector('.partners-prev');
     const nextBtn = document.querySelector('.partners-next');
     
-    if (items.length < 3) {
-        console.warn('Carrossel precisa de pelo menos 3 itens');
-        return;
-    }
-
-    // Clona os itens (para efeito infinito)
-    items.forEach(item => {
-        const clone = item.cloneNode(true);
-        clone.classList.add('clone');
-        grid.appendChild(clone);
-    });
-
-    // Configurações ajustáveis
-    const config = {
-        itemWidth: items[0].offsetWidth + 30, // Largura + gap
-        animationDuration: 600, // Duração mais suave (em ms)
-        autoPlayDelay: 5000, // Tempo entre transições (5 segundos)
-        easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)' // Curva de animação suave
-    };
-
+    if (!grid || items.length < 3) return; // Precisa de pelo menos 3 itens
+    
+    const itemWidth = items[0].offsetWidth + 30; // Largura + gap
     let currentIndex = 0;
-    let isAnimating = false;
-    let autoPlayInterval;
-
-    // Função para mover o carrossel
-    function moveCarousel(direction) {
-        if (isAnimating) return;
-        
-        isAnimating = true;
-        grid.style.transition = `transform ${config.animationDuration}ms ${config.easing}`;
-        
-        if (direction === 'next') {
-            currentIndex++;
-        } else {
-            currentIndex--;
+    const visibleItems = Math.floor(carousel.offsetWidth / itemWidth);
+    
+    // Clona os primeiros itens e adiciona no final para efeito contínuo
+    items.forEach((item, index) => {
+        if (index < visibleItems) {
+            const clone = item.cloneNode(true);
+            grid.appendChild(clone);
         }
-        
-        grid.style.transform = `translateX(-${currentIndex * config.itemWidth}px)`;
-    }
+    });
 
-    // Tratamento do fim da animação
-    function handleTransitionEnd() {
-        isAnimating = false;
+    // Atualiza o carrossel
+    function updateCarousel() {
+        grid.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+        grid.style.transition = 'transform 0.5s ease';
         
-        // Reset suave quando chega ao final
+        // Quando chegar no final, volta sem animação
         if (currentIndex >= items.length) {
-            grid.style.transition = 'none';
-            currentIndex = 0;
-            grid.style.transform = `translateX(0)`;
-            void grid.offsetWidth; // Força reflow
+            setTimeout(() => {
+                grid.style.transition = 'none';
+                currentIndex = 0;
+                grid.style.transform = `translateX(0)`;
+            }, 500);
         }
         
-        // Reset suave quando volta antes do primeiro
+        // Quando voltar ao início, ajusta sem animação
         if (currentIndex < 0) {
-            grid.style.transition = 'none';
-            currentIndex = items.length - 1;
-            grid.style.transform = `translateX(-${currentIndex * config.itemWidth}px)`;
-            void grid.offsetWidth;
+            setTimeout(() => {
+                grid.style.transition = 'none';
+                currentIndex = items.length - 1;
+                grid.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+            }, 500);
         }
     }
 
-    // Controles
-    grid.addEventListener('transitionend', handleTransitionEnd);
-    nextBtn?.addEventListener('click', () => {
-        stopAutoPlay();
-        moveCarousel('next');
-        startAutoPlay();
-    });
-    
-    prevBtn?.addEventListener('click', () => {
-        stopAutoPlay();
-        moveCarousel('prev');
-        startAutoPlay();
+    // Próximo item
+    nextBtn.addEventListener('click', () => {
+        currentIndex++;
+        updateCarousel();
     });
 
-    // Auto-play melhorado
-    function startAutoPlay() {
-        stopAutoPlay(); // Limpa qualquer intervalo existente
-        autoPlayInterval = setInterval(() => moveCarousel('next'), config.autoPlayDelay);
-    }
-    
-    function stopAutoPlay() {
-        clearInterval(autoPlayInterval);
-    }
-    
-    // Inicia com delay para evitar conflito com a inicialização
-    setTimeout(startAutoPlay, 1000);
-    
-    // Pausa ao interagir
-    carousel.addEventListener('mouseenter', stopAutoPlay);
-    carousel.addEventListener('mouseleave', startAutoPlay);
-    carousel.addEventListener('touchstart', stopAutoPlay);
-    carousel.addEventListener('touchend', startAutoPlay);
+    // Item anterior
+    prevBtn.addEventListener('click', () => {
+        currentIndex--;
+        updateCarousel();
+    });
 
-    // Redimensionamento responsivo
-    function handleResize() {
-        config.itemWidth = items[0].offsetWidth + 30;
-        grid.style.transform = `translateX(-${currentIndex * config.itemWidth}px)`;
-    }
-    
-    window.addEventListener('resize', handleResize);
+    // Inicializa
+    updateCarousel();
+
+    // Redimensionamento
+    window.addEventListener('resize', () => {
+        const newItemWidth = items[0].offsetWidth + 30;
+        currentIndex = Math.round(currentIndex * itemWidth / newItemWidth);
+        itemWidth = newItemWidth;
+        updateCarousel();
+    });
 }
 
-// Inicialização segura
-function initCarouselWhenReady() {
-    if (document.readyState === 'complete') {
-        initPartnersCarousel();
-    } else {
-        document.addEventListener('DOMContentLoaded', initPartnersCarousel);
-    }
-}
+// Carrossel de Eventos
+document.addEventListener('DOMContentLoaded', function() {
+  const eventCarousel = document.querySelector('.event-carousel');
+  const items = document.querySelectorAll('.event-item');
+  const dots = document.querySelectorAll('.event-dots .dot');
+  const prevBtn = document.querySelector('.event-prev');
+  const nextBtn = document.querySelector('.event-next');
+  
+  let currentIndex = 0;
+  let interval;
 
-initCarouselWhenReady();
+  // Função para mostrar item
+  function showItem(index) {
+      // Remove classe ativa de todos
+      items.forEach(item => item.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('active'));
+      
+      // Atualiza índice
+      currentIndex = (index + items.length) % items.length;
+      
+      // Adiciona classe ativa
+      items[currentIndex].classList.add('active');
+      dots[currentIndex].classList.add('active');
+  }
+
+  // Event listeners
+  nextBtn.addEventListener('click', () => {
+      clearInterval(interval);
+      showItem(currentIndex + 1);
+      startAutoRotate();
+  });
+  
+  prevBtn.addEventListener('click', () => {
+      clearInterval(interval);
+      showItem(currentIndex - 1);
+      startAutoRotate();
+  });
+  
+  dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+          clearInterval(interval);
+          showItem(index);
+          startAutoRotate();
+      });
+  });
+  
+  function startAutoRotate() {
+      clearInterval(interval);
+      interval = setInterval(() => showItem(currentIndex + 1), 8000);
+  }
+  
+  // Controles de hover
+  eventCarousel.addEventListener('mouseenter', () => clearInterval(interval));
+  eventCarousel.addEventListener('mouseleave', startAutoRotate);
+  
+  // Inicialização
+  showItem(0);
+  startAutoRotate();
+});
+
+// Carrossel Nossa História
+document.addEventListener('DOMContentLoaded', function() {
+  const historiaCarousel = document.querySelector('.historia-carousel');
+  const items = document.querySelectorAll('.historia-carousel .carousel-item');
+  const dots = document.querySelectorAll('.historia-dots .dot');
+  const prevBtn = document.querySelector('.historia-prev');
+  const nextBtn = document.querySelector('.historia-next');
+  
+  let currentIndex = 0;
+  let interval;
+
+  // Função para mostrar item
+  function showItem(index) {
+      // Remove classe ativa de todos
+      items.forEach(item => item.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('active'));
+      
+      // Atualiza índice
+      currentIndex = (index + items.length) % items.length;
+      
+      // Adiciona classe ativa
+      items[currentIndex].classList.add('active');
+      dots[currentIndex].classList.add('active');
+  }
+
+  // Event listeners
+  nextBtn.addEventListener('click', () => {
+      clearInterval(interval);
+      showItem(currentIndex + 1);
+      startAutoRotate();
+  });
+  
+  prevBtn.addEventListener('click', () => {
+      clearInterval(interval);
+      showItem(currentIndex - 1);
+      startAutoRotate();
+  });
+  
+  dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+          clearInterval(interval);
+          showItem(index);
+          startAutoRotate();
+      });
+  });
+  
+  function startAutoRotate() {
+      clearInterval(interval);
+      interval = setInterval(() => showItem(currentIndex + 1), 8000);
+  }
+  
+  // Controles de hover
+  if (historiaCarousel) {
+      historiaCarousel.addEventListener('mouseenter', () => clearInterval(interval));
+      historiaCarousel.addEventListener('mouseleave', startAutoRotate);
+  }
+  
+  // Inicialização
+  if (items.length > 0) {
+      showItem(0);
+      startAutoRotate();
+  }
+});
+
+// Inicia quando o DOM estiver pronto
+document.addEventListener('DOMContentLoaded', initPartnersCarousel);
+
