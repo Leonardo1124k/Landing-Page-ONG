@@ -1,20 +1,37 @@
 //Isso serve para a header aparecer e desaparecer conforme mexo o mouse pra cima e baixo
+// Código corrigido para o header
 document.addEventListener("DOMContentLoaded", function() {
   let lastScrollTop = 0;
   const header = document.querySelector("header");
+  const headerHeight = header.offsetHeight;
+  let ticking = false;
 
   window.addEventListener("scroll", function() {
-    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Adiciona uma tolerância de 5px para evitar oscilações
+        if (Math.abs(currentScroll - lastScrollTop) < 5) {
+          ticking = false;
+          return;
+        }
 
-    if (currentScroll > lastScrollTop) {
-      // Rolando para baixo: esconde o header
-      header.style.top = "-100px"; // Ajuste o valor conforme a altura real do seu cabeçalho
-    } else {
-      // Rolando para cima: mostra o header
-      header.style.top = "0";
+        if (currentScroll > lastScrollTop && currentScroll > headerHeight) {
+          // Rolando para baixo: esconde o header
+          header.style.transform = `translateY(-${headerHeight}px)`;
+          header.style.transition = "transform 0.3s ease-out";
+        } else {
+          // Rolando para cima ou no topo: mostra o header
+          header.style.transform = "translateY(0)";
+          header.style.transition = "transform 0.3s ease-out";
+        }
+
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+        ticking = false;
+      });
+      ticking = true;
     }
-
-    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
   });
 });
 
@@ -351,3 +368,19 @@ document.addEventListener('DOMContentLoaded', function() {
 // Inicia quando o DOM estiver pronto
 document.addEventListener('DOMContentLoaded', initPartnersCarousel);
 
+// Menu Mobile
+document.addEventListener('DOMContentLoaded', function() {
+  const menuToggle = document.createElement('div');
+  menuToggle.className = 'menu-toggle';
+  menuToggle.innerHTML = '<span></span><span></span><span></span>';
+  
+  const header = document.querySelector('header .container');
+  header.appendChild(menuToggle);
+  
+  const navLinks = document.querySelector('.nav-links');
+  
+  menuToggle.addEventListener('click', function() {
+    this.classList.toggle('active');
+    navLinks.classList.toggle('active');
+  });
+});

@@ -9,6 +9,8 @@ O objetivo principal é a criação de uma **landing page institucional para a O
 
 A landing page foi desenvolvida utilizando tecnologias web modernas e seguiu as melhores práticas de **Engenharia de Software**, passando por todas as etapas de levantamento de requisitos, modelagem de casos de uso, documentação, diagramação e desenvolvimento.
 
+Desenvolvedores: Leonardo1124k (gerente), lucianospeixoto (vice-gerente), felipeosouza06, joseantoniomarques
+
 ## 🛠️ Tecnologias Utilizadas
 
 - HTML5
@@ -20,24 +22,24 @@ A landing page foi desenvolvida utilizando tecnologias web modernas e seguiu as 
 ## 📋 Funcionalidades Principais
 
 - Apresentação institucional da ONG (história, missão e valores)
-- Área de doações com formulário
-- Área de cadastro de voluntários
-- Integração com serviços externos para recebimento de formulários
+- Formulário para doações e voluntariado
+- Integração com serviços externos para manutenção de formulários
 - Design responsivo (compatível com desktop e mobile)
-- Estrutura de navegação simples e objetiva
+- Estrutura de navegação objetiva
 
 ## 🚀 Como Executar o Projeto Localmente
 
 1. Clone este repositório:
 
 ```bash
-git clone https://github.com/seu-usuario/nome-do-repositorio.git
+cd pasta-que-ira-utilizar
+git clone https://github.com/seu-usuario/Landing-Page-ONG.git
 ```
 
 2. Navegue até a pasta do projeto:
 
 ```bash
-cd nome-do-repositorio
+cd Landing-Page-ONG
 ```
 
 3. Abra o arquivo **index.html** no seu navegador de preferência:
@@ -47,10 +49,10 @@ cd nome-do-repositorio
 ```
 ## 👥 Equipe de Desenvolvimento – Grupo G3 (Fatec Franca)
 
-- Leonardo Prado Pessoni – Gerente de Projeto
-- Luciano Souza Peixoto – Vice-Gerente / Desenvolvedor
-- José Antônio Marques Peres Coimbra de Lima – Desenvolvedor
-- Felipe Oliveira Souza – Desenvolvedor
+- @Leonardo1124k – Gerente do Projeto
+- @lucianospeixoto – Vice-Gerente
+- @joseantoniomarques – Desenvolvedor
+- @felipeosouza06 – Desenvolvedor
 
 ## 📢 Agradecimentos
 
