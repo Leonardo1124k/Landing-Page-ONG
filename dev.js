@@ -378,9 +378,38 @@ document.addEventListener('DOMContentLoaded', function() {
   header.appendChild(menuToggle);
   
   const navLinks = document.querySelector('.nav-links');
+  const navItems = document.querySelectorAll('.nav-links a'); // Seleciona todos os links
   
   menuToggle.addEventListener('click', function() {
     this.classList.toggle('active');
     navLinks.classList.toggle('active');
+  });
+  
+  // Adiciona evento de clique para cada link de navegação
+  navItems.forEach(item => {
+    item.addEventListener('click', function() {
+      // Fecha o menu
+      menuToggle.classList.remove('active');
+      navLinks.classList.remove('active');
+      
+      // Se for um link âncora, rola suavemente para a seção
+      if(this.getAttribute('href').startsWith('#')) {
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if(targetElement) {
+          event.preventDefault(); // Previne o comportamento padrão
+          window.scrollTo({
+            top: targetElement.offsetTop - 100, // Ajuste para o header fixo
+            behavior: 'smooth'
+          });
+          
+          // Adiciona um pequeno delay para melhor experiência
+          setTimeout(() => {
+            targetElement.focus(); // Foco para acessibilidade
+          }, 1000);
+        }
+      }
+    });
   });
 });

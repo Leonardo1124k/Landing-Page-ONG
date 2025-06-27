@@ -90,14 +90,14 @@ nav {
   height: 100vh;
   color: #fff;
   margin-top: 65px;
-  background: url(images/Call_to_action.png) center/cover no-repeat;
+  background: url(images/Apresentação_Moradia_Digna.png) center/cover no-repeat;
 }
 
 .hero-overlay {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
 }
@@ -445,6 +445,7 @@ nav {
 .realizacao-imagem {
   flex: 1;
   min-width: 300px;
+  height: auto;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -768,16 +769,17 @@ nav {
 
 .event-image {
   flex: 1;
-  width: 471px;
-  height: 500px;
+  width: 500px;
+  height: auto;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
+  transform: scale(1.1); /* aumenta % */
 }
 
 .event-image:hover {
-  transform: scale(1.02);
+   transform: scale(1.15); /* aumenta % */
 }
 
 .event-image img {
@@ -883,10 +885,18 @@ nav {
     margin-bottom: 60px; /* Espaço para o botão */
 }
 
+.about-text-2 {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: black;
+  margin-bottom: 1.5rem;
+  font-weight: 410;
+}
+
 .cta-buttons-2 {
-    position: absolute; /* Novo */
+    position: relative; /* Novo */
     bottom: 0; /* Novo - fixa na base */
-    left: 0;
+    left: 5px;
     right: 0;
     display: flex;
     justify-content: center;
@@ -967,13 +977,15 @@ nav {
 
   .help-column h3 {
     color: #F4A835;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     margin-bottom: 30px;
+    position: relative;
+    left: -20px;
   }
 
   .help-column p {
     margin-bottom: 0.2rem; /* Espaço mínimo abaixo do parágrafo */
-    line-height: 1.4; /* Reduz um pouco a altura da linha */
+    line-height: 1.2; /* Reduz um pouco a altura da linha */
     padding-bottom: 0; /* Remove padding extra */
     text-align: left;
   }
@@ -994,7 +1006,6 @@ nav {
     position: relative;
 }
   .partners-section {
-    background-color: #f5f7fa;
     padding: 80px 0; /* Padding apenas top/bottom */
     text-align: center;
     position: relative;
@@ -1174,6 +1185,11 @@ nav {
     margin-bottom: 10px;
   }
 
+  .footer-bottom span {
+    color: blue;
+    cursor: pointer;
+  }
+
   /* Ícones */
   .fas,
   .fab {
@@ -1292,7 +1308,21 @@ nav {
   .menu-toggle.active span:nth-child(3) {
     transform: rotate(-45deg) translate(7px, -7px);
   }
+
+  .nav-links a {
+    display: block;
+    padding: 12px 20px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .donate-btn {
+    width: 100%;
+    margin: 20px auto 0;
+    text-align: center;
+  }
 }
+
 
 @media (max-width: 576px) {
   .logo img {
@@ -1812,7 +1842,7 @@ nav {
   }
   
   .event-description p {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 }
 
@@ -2056,10 +2086,14 @@ nav {
 @media (max-width: 400px) {
   .comoajudar-title {
     font-size: 1.6rem;
+    position: relative;
+    left: -5px;
   }
   
   .help-column h3 {
     font-size: 1.2rem;
+    position: relative;
+    left: -5px;
   }
   
   .btn-yellow-2 {

@@ -53,7 +53,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Validação do formulário
     form.addEventListener('submit', function(e) {
-        e.preventDefault();
         let isValid = true;
 
         // Validações
@@ -87,14 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (isValid) {
             submitBtn.disabled = true;
             submitBtn.textContent = 'Processando...';
-            
-            setTimeout(() => {
-                const nome = document.getElementById('fullName').value;
-                const valor = selectedAmount.value === 'other' ? customAmountInput.value : selectedAmount.value;
-                
-                // CORREÇÃO APLICADA AQUI - caminho relativo ajustado
-                window.location.href = '../formsubmmit_/two/page.html?nome=' + encodeURIComponent(nome) + '&valor=' + valor;
-            }, 1000);
+            form.submit();
         }
     });
 
