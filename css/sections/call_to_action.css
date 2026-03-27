@@ -13,6 +13,7 @@
   display: flex;
   align-items: center;
   justify-content: center; /* centraliza horizontalmente o conteúdo */
+   margin-top: 50px;
 }
 
 .hero-content {
@@ -26,13 +27,13 @@
   line-height: 1.4;
   font-weight: 700;
   letter-spacing: 1px;
-  font-size: 3.3rem;
+  font-size: 3rem;
   margin-bottom: 20px;
   color: var(--dd);
 }
 
 .hero-text {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   line-height: 1.6;
   color: var(--aa);
   margin-bottom: 20px;
@@ -53,10 +54,10 @@
 
 .cta-btn {
   display: inline-block;
-  padding: 15px 27px;
+  padding: 13px 24px;
   border-radius: 8px;
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   text-align: center;
   text-decoration: none;
   transition: all 0.3s ease;
